@@ -20,8 +20,12 @@ export const authSlice = createSlice({
    checkingCredentials: (state) => {
     state.status = "checking";
   },
-   logout: (state, payload) => {
-
+   logout: (state, {payload}) => {
+    state.status = "not-authenicated";
+    state.uid = null;
+    state.email = null;
+    state.displayName = null;
+    state.erroMessage = payload?.errorMessage;
    }
   },
 });

@@ -1,21 +1,25 @@
 import { Link as RouterLink } from 'react-router-dom'
 import { Button, Grid, Link, TextField, Typography } from '@mui/material'
-import React from 'react'
+import React, { useMemo } from 'react'
 import useForm from '../hooks/useForm'
 import useAuthStore from '../hooks/useAuthStore'
+import { useSelector } from 'react-redux'
+
+
 
 const Login = () => {
     const { checkingAuthentication, startGoogleSignIn } = useAuthStore()
-
+    const { status } = useSelector((state) => state.auth)
     const { email, password, inputChange } = useForm({
         email: "guido@mail.com",
         password: "123456"
     })
 
+    const isAuthenticating = useMemo(() => status === "checking", [status])
+
     const onSubmit = async (event) => {
         event.preventDefault()
         await checkingAuthentication()
-        console.log({ email, password });
     }
 
     const onGoogleSignIn = async () => {
@@ -56,12 +60,13 @@ const Login = () => {
                                 variant="contained"
                                 type="submit"
                                 fullWidth
+                                disabled={isAuthenticating}
                             >
                                 Login
                             </Button>
                         </Grid>
                         <Grid>
-                            <Button variant="contained" fullWidth sx={{ fontFamily: "Jost", width: 195 }} onClick={onGoogleSignIn}>
+                            <Button variant="contained" disabled={isAuthenticating} fullWidth sx={{ fontFamily: "Jost", width: 195 }} onClick={onGoogleSignIn}>
                                 Google
                             </Button>
                         </Grid>

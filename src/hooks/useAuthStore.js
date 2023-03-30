@@ -1,5 +1,7 @@
+import { async } from "@firebase/util";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  loginWithEmailPassword,
   registerUserWithEmailPassword,
   singInWithGoogle,
 } from "../firebase/providers";
@@ -22,10 +24,30 @@ const useAuthStore = () => {
     dispatch(login(result));
   };
 
-  const startCreatingUserWithEmailPassword = async ({ password, email, displayName}) => {
+  const startCreatingUserWithEmailPassword = async ({
+    password,
+    email,
+    displayName,
+  }) => {
     dispatch(checkingCredentials());
-    const result = await registerUserWithEmailPassword({ password, email, displayName});
-    if (!result.ok) { return dispatch(logout({errorMessage: result.errorMessage}))}
+    const result = await registerUserWithEmailPassword({
+      password,
+      email,
+      displayName,
+    });
+    if (!result.ok) {
+      return dispatch(logout({ errorMessage: result.errorMessage }));
+    }
+    dispatch(login(result));
+  };
+
+  const startLoginWithEmailPassword = async ({ email, password }) => {
+    dispatch(checkingCredentials());
+    const result = await loginWithEmailPassword({ email, password });
+    console.log(result);
+    if (!result.ok) {
+      return dispatch(logout({ errorMessage: result.errorMessage }));
+    }
     dispatch(login(result));
   };
 
@@ -33,6 +55,7 @@ const useAuthStore = () => {
     checkingAuthentication,
     startGoogleSignIn,
     startCreatingUserWithEmailPassword,
+    startLoginWithEmailPassword,
   };
 };
 

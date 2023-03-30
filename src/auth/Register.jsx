@@ -1,5 +1,5 @@
 import { Link as RouterLink } from 'react-router-dom'
-import { Button, Grid, Link, TextField, Typography } from '@mui/material'
+import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import useForm from '../hooks/useForm'
 import useAuthStore from '../hooks/useAuthStore'
@@ -92,6 +92,7 @@ const Register = () => {
                     </Grid>
                     <Grid display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-evenly"} mt={4} sx={{ fontFamily: "Jost", width: 400 }}>
                         <Grid>
+                            {errorMessage ? <Alert sx={{marginBottom: 2}} severity='error'>{errorMessage}</Alert> : ""}
                             <Button
                                 sx={{ width: 400 }}
                                 variant="contained"

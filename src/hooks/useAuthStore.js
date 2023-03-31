@@ -1,7 +1,9 @@
 import { async } from "@firebase/util";
 import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../firebase/firebase";
 import {
   loginWithEmailPassword,
+  logoutFirebase,
   registerUserWithEmailPassword,
   singInWithGoogle,
 } from "../firebase/providers";
@@ -9,7 +11,6 @@ import { checkingCredentials, login, logout } from "../store/auth/authSlice";
 
 const useAuthStore = () => {
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.auth);
 
   const checkingAuthentication = () => {
     dispatch(checkingCredentials());
@@ -51,11 +52,17 @@ const useAuthStore = () => {
     dispatch(login(result));
   };
 
+  const startLogout = async () => {
+    await logoutFirebase();
+    dispatch(logout());
+  };
+
   return {
     checkingAuthentication,
     startGoogleSignIn,
     startCreatingUserWithEmailPassword,
     startLoginWithEmailPassword,
+    startLogout,
   };
 };
 

@@ -11,8 +11,8 @@ const Login = () => {
     const { startLoginWithEmailPassword, startGoogleSignIn } = useAuthStore()
     const { status, errorMessage } = useSelector((state) => state.auth)
     const { email, password, inputChange } = useForm({
-        email: "guido@mail.com",
-        password: "123456"
+        email: "",
+        password: ""
     })
 
     const isAuthenticating = useMemo(() => status === "checking", [status])

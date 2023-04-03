@@ -48,6 +48,7 @@ const useForm = (initialForm = {}, formValidations = {}) => {
     inputChange,
     onReset,
     isFormValid,
+    setFormState,
 
     ...formValidation
   };

@@ -12,15 +12,15 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
-    "@mui/material": "^5.11.14",
+    "@mui/material": "^5.11.15",
     "@reduxjs/toolkit": "^1.9.3",
     "date-fns": "^2.29.3",
-    "firebase": "^9.18.0",
+    "firebase": "^9.19.1",
     "react": "^18.2.0",
-    "react-datepicker": "^4.10.0",
+    "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.9.0"
+    "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

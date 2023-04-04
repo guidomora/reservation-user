@@ -4,3 +4,9 @@
   height: 100vh;
   background-color: #14213d;
 }
+
+
+.sub {
+  text-decoration: none;
+  color: inherit;
+}

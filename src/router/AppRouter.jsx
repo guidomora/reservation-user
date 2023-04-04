@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AuthRoutes from '../auth/routes/AuthRoutes'
 import { auth } from '../firebase/firebase'
-import useAuthStore from '../hooks/useAuthStore'
 import ReservationRoutes from '../Reservation/ReservationRoutes/ReservationRoutes'
-import { login, logout } from '../store/auth/authSlice'
+import { adminLogin, login, logout } from '../store/auth/authSlice'
 import CheckingAuth from '../ui/CheckingAuth'
+import Admin from '../admin/Admin'
+
 
 
 
@@ -22,22 +23,30 @@ const AppRouter = () => {
       const { uid, email, displayName, photoURL } = user;
       dispatch(login({ uid, email, displayName, photoURL }))
     })
-
+  
   }, [])
-
 
   if (status === "checking") {
     return <CheckingAuth />
   }
 
+  const condicion = () => {
+    if (status === "authenticated") {
+      <Route path="/*" element={<ReservationRoutes />} />
+    } else {<Route path="/auth/*" element={<AuthRoutes />} />}
+    if (status === "admin") {
+      <Route path="/admin" element={<Admin />} />
+    }
+  }
   return (
     <Routes>
-      {status === "authenticated" 
-      ? <Route path="/*" element={<ReservationRoutes />} /> 
-      : <Route path="/auth/*" element={<AuthRoutes />} />}
+      {status === "authenticated"
+        ? <Route path="/*" element={<ReservationRoutes />} />
+        : <Route path="/auth/*" element={<AuthRoutes />} />}
       <Route path='/*' element={<Navigate to="/auth/login" />} />
     </Routes>
   )
 }
 
 export default AppRouter
+

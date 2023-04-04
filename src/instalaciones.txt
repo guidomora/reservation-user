@@ -6,3 +6,5 @@ npm install firebase
 npm install @reduxjs/toolkit
 npm install react-redux
 npm install date-fns
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+npm install animate.css --save

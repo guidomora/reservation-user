@@ -9,6 +9,8 @@ import "../App.css";
 import useAuthStore from "../hooks/useAuthStore";
 import useForm from "../hooks/useForm";
 import useFormStore from "../hooks/useFormStore";
+import { Link } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom'
 
 registerLocale("es", es);
 
@@ -35,12 +37,12 @@ const FirstForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    createReservation(formState)
-    console.log(formState);
+    createReservation({fecha, horario, cantidad})
+
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
       <Grid
         display={"flex"}
         flexDirection={"col"}
@@ -118,7 +120,7 @@ const FirstForm = () => {
               sx={{ backgroundColor: "secondary.main", fontFamily: "Jost" }}
               type="submit"
             >
-              Siguiente
+              <Link className="sub" component={RouterLink} to="/Seleccion/End"> Reservar</Link>
             </Button>
           </Grid>
         </Grid>

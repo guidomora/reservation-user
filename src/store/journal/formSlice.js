@@ -3,17 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const formSlice = createSlice({
   name: "form",
   initialState: {
-    reservation: {
-      fecha: "",
-      horario: "",
-      cantidad: "",
-    },
+    reservation: []
   },
   reducers: {
     startReservation: (state, { payload }) => {
-      state.reservation.fecha = payload;
-      state.reservation.horario = payload;
-      state.reservation.cantidad = payload;
+      state.reservation.push(payload)
     },
   },
 });

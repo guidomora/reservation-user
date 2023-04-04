@@ -7,7 +7,12 @@ import {
   registerUserWithEmailPassword,
   singInWithGoogle,
 } from "../firebase/providers";
-import { checkingCredentials, login, logout } from "../store/auth/authSlice";
+import {
+  adminLogin,
+  checkingCredentials,
+  login,
+  logout,
+} from "../store/auth/authSlice";
 
 const useAuthStore = () => {
   const dispatch = useDispatch();
@@ -45,11 +50,20 @@ const useAuthStore = () => {
   const startLoginWithEmailPassword = async ({ email, password }) => {
     dispatch(checkingCredentials());
     const result = await loginWithEmailPassword({ email, password });
-    console.log(result);
     if (!result.ok) {
       return dispatch(logout({ errorMessage: result.errorMessage }));
+    } else if (result.uid === "CIhjCYGgvrOzhBbeo2uxebNkP7h2") {
+      return dispatch(adminLogin(result));
+    } else dispatch(login(result));
+    
+  };
+
+  const startLoginAdmin = async ({ email, password }) => {
+    dispatch(checkingCredentials());
+    const result = await loginWithEmailPassword({ email, password });
+    if (result.uid === "CIhjCYGgvrOzhBbeo2uxebNkP7h2") {
+      return dispatch(adminLogin(result));
     }
-    dispatch(login(result));
   };
 
   const startLogout = async () => {
@@ -63,6 +77,7 @@ const useAuthStore = () => {
     startCreatingUserWithEmailPassword,
     startLoginWithEmailPassword,
     startLogout,
+    startLoginAdmin,
   };
 };
 

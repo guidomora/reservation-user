@@ -17,6 +17,13 @@ export const authSlice = createSlice({
     state.displayName = payload.displayName;
     state.errorMessage = null;
    },
+   adminLogin: (state, {payload}) => {
+    state.status = "admin";
+    state.uid = payload.uid;
+    state.email = payload.email;
+    state.displayName = payload.displayName;
+    state.errorMessage = null;
+   },
    checkingCredentials: (state) => {
     state.status = "checking";
   },
@@ -31,4 +38,4 @@ export const authSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { login, checkingCredentials, logout } = authSlice.actions;
+export const { login, checkingCredentials, logout, adminLogin } = authSlice.actions;

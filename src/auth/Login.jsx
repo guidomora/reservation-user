@@ -8,8 +8,8 @@ import { useSelector } from 'react-redux'
 
 
 const Login = () => {
-    const { startLoginWithEmailPassword, startGoogleSignIn } = useAuthStore()
-    const { status, errorMessage } = useSelector((state) => state.auth)
+    const { startLoginWithEmailPassword, startGoogleSignIn, startLoginAdmin } = useAuthStore()
+    const { status, errorMessage, uid } = useSelector((state) => state.auth)
     const { email, password, inputChange } = useForm({
         email: "",
         password: ""
@@ -27,7 +27,7 @@ const Login = () => {
         console.log("on google");
     }
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
             <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 450, width: 500, backgroundColor: "#edf6f9" }}>
                 <Grid sx={{ width: 400 }}>
                     <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost", }}>Inicio de sesion</Typography>

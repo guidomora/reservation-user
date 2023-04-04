@@ -52,8 +52,6 @@ const useAuthStore = () => {
     const result = await loginWithEmailPassword({ email, password });
     if (!result.ok) {
       return dispatch(logout({ errorMessage: result.errorMessage }));
-    } else if (result.uid === "CIhjCYGgvrOzhBbeo2uxebNkP7h2") {
-      return dispatch(adminLogin(result));
     } else dispatch(login(result));
     
   };
@@ -61,9 +59,7 @@ const useAuthStore = () => {
   const startLoginAdmin = async ({ email, password }) => {
     dispatch(checkingCredentials());
     const result = await loginWithEmailPassword({ email, password });
-    if (result.uid === "CIhjCYGgvrOzhBbeo2uxebNkP7h2") {
-      return dispatch(adminLogin(result));
-    }
+    return dispatch(adminLogin(result));
   };
 
   const startLogout = async () => {

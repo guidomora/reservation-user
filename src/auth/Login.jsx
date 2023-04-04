@@ -19,7 +19,9 @@ const Login = () => {
 
     const onSubmit = async (event) => {
         event.preventDefault()
-        startLoginWithEmailPassword({email, password})
+        { await email === "administrador@mail.com" ? startLoginAdmin({ email, password }) 
+        : startLoginWithEmailPassword({ email, password }) }
+
     }
 
     const onGoogleSignIn = async () => {
@@ -54,7 +56,7 @@ const Login = () => {
                         />
                     </Grid>
                     <Grid mt={2}>
-                        {errorMessage ?  <Alert severity='error'>{errorMessage}</Alert> : ""}
+                        {errorMessage ? <Alert severity='error'>{errorMessage}</Alert> : ""}
                     </Grid>
                     <Grid display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-evenly"} mt={4} sx={{ fontFamily: "Jost", width: 400 }}>
                         <Grid>

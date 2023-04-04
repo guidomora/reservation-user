@@ -30,14 +30,6 @@ const AppRouter = () => {
     return <CheckingAuth />
   }
 
-  const condicion = () => {
-    if (status === "authenticated") {
-      <Route path="/*" element={<ReservationRoutes />} />
-    } else {<Route path="/auth/*" element={<AuthRoutes />} />}
-    if (status === "admin") {
-      <Route path="/admin" element={<Admin />} />
-    }
-  }
   return (
     <Routes>
       {status === "authenticated"

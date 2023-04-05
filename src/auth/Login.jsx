@@ -19,9 +19,7 @@ const Login = () => {
 
     const onSubmit = async (event) => {
         event.preventDefault()
-        { await email === "administrador@mail.com" ? startLoginAdmin({ email, password }) 
-        : startLoginWithEmailPassword({ email, password }) }
-
+        startLoginWithEmailPassword({ email, password })
     }
 
     const onGoogleSignIn = async () => {

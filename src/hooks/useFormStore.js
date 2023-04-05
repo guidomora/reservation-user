@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { startReservation } from "../store/journal/formSlice";
+import { startClearingReservation, startReservation } from "../store/journal/formSlice";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
@@ -20,8 +20,13 @@ const useFormStore = () => {
     dispatch(startReservation(newReservation))
   };
 
+  const clearReservation = () => {
+    dispatch(startClearingReservation())
+  }
+
   return {
     createReservation,
+    clearReservation,
   };
 };
 

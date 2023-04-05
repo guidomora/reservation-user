@@ -2,11 +2,10 @@ import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import FirstForm from '../FirstForm'
 import End from '../End'
-import Admin from '../../admin/Admin'
 import { useSelector } from 'react-redux'
+import Admin from '../../admin/Admin'
 
 const ReservationRoutes = () => {
-  const {email} =useSelector(state => state.auth)
 
 
   

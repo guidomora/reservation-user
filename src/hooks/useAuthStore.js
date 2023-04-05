@@ -1,6 +1,4 @@
-import { async } from "@firebase/util";
-import { useDispatch, useSelector } from "react-redux";
-import { auth } from "../firebase/firebase";
+import { useDispatch } from "react-redux";
 import {
   loginWithEmailPassword,
   logoutFirebase,

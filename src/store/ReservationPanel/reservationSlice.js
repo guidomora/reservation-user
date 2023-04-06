@@ -7,7 +7,7 @@ export const reservationSlice = createSlice({
     },
     reducers: {
         startSetingReservations: (state, {payload}) => {
-            state.reservations.push(payload)
+            state.reservations = payload.cloudReservations
         },
     }
 });

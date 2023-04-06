@@ -4,7 +4,6 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 const useFormStore = () => {
-  const { uid, email, displayName } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const createReservation = async ({ fecha, horario, cantidad, celular, displayName }) => {
@@ -16,7 +15,7 @@ const useFormStore = () => {
       nombre: displayName
     };
 
-    const newDoc = doc(collection(db, `/reservations/user-reservation/${uid}`));
+    const newDoc = doc(collection(db, `reservations`));
     await setDoc(newDoc, newReservation);
     newReservation.id = newDoc.id
     dispatch(startReservation(newReservation))
@@ -33,6 +32,3 @@ const useFormStore = () => {
 };
 
 export default useFormStore;
-
-
-// const newDoc = doc(collection(db, `${uid}/reservations/reservation`));

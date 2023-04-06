@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useReservationStore from '../../hooks/useReservationStore'
+import { useSelector } from 'react-redux'
 
 const Reservations = () => {
-  const {setReservations} = useReservationStore()
+  const { reservations } = useSelector(state => state.reservation)
+  const { setReservations } = useReservationStore()
 
-  setReservations()
+  useEffect(() => {
+    setReservations()
+  }, [])
 
   return (
-    <div>Reservations</div>
+    <div>
+      Reservations
+    </div>
   )
 }
 

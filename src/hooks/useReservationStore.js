@@ -8,21 +8,15 @@ const useReservationStore = () => {
 
   const setReservations = async () => {
 
-    const docRef = doc(db, "reservations", "user-reservation");
-    const docSnap = await getDoc(docRef);
-    
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data().array.forEach(element => {
-        element
-      })
-      );
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-    
-
-    dispatch(startSetingReservations());
+    const collectionRef = collection(db, `reservations`);
+    const docs = await getDocs(collectionRef);
+    // como no nostraia el id creamos un array, le pusheamos un objeto que tiene el id y el resto
+    // de la info de los documentos
+    const cloudReservations = []
+    docs.forEach(doc => {
+      cloudReservations.push({id: doc.id, ...doc.data()})
+    })
+    dispatch(startSetingReservations({cloudReservations}));
   };
 
   return {

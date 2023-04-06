@@ -9,10 +9,11 @@ export const formSlice = createSlice({
   reducers: {
     startReservation: (state, { payload }) => {
       state.reservation.push(payload)
-      state. reserved = true
+      state.reserved = true
     },
     startClearingReservation: (state) => {
       state.reservation = []
+      state.reserved = false
     }
   },
 });

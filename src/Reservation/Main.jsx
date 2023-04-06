@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Input, TextField, Typography } from "@mui/material";
 import { addDays } from "date-fns";
 import { es } from "date-fns/locale";
 import React from "react";
@@ -18,16 +18,18 @@ const Main = () => {
     fecha,
     horario,
     cantidad,
+    celular,
     inputChange,
     formState,
     setFormState,
   } = useForm({
     fecha: new Date(),
     horario: "",
+    celular: "",
     cantidad: "",
   });
   const { displayName, uid } = useSelector((state) => state.auth);
-  const {reserved} = useSelector(state => state.form)
+  const { reserved } = useSelector(state => state.form)
   const { startLogout } = useAuthStore();
   const { createReservation, clearReservation } = useFormStore()
 
@@ -48,12 +50,12 @@ const Main = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await createReservation({ fecha, horario, cantidad })
+    await createReservation({ fecha, horario, cantidad, celular, displayName })
     sweet()
   };
 
   const clearAll = async () => {
-   await startLogout()
+    await startLogout()
     clearReservation()
   }
 
@@ -95,7 +97,21 @@ const Main = () => {
               onChange={(event) => onDateChanged(event, "fecha")}
             />
           </Grid>
-
+          <Grid mt={2}>
+            <Typography variant="p" sx={{ fontFamily: "Jost" }}>
+              Celular
+            </Typography>
+            <TextField
+              type="number"
+              name="celular"
+              fullWidth
+              onChange={inputChange}
+              value={celular}
+              variant="outlined"
+              size="small"
+              sx={{backgroundColor: "white"}}
+            />
+          </Grid>
           <Grid mt={3}>
             <Typography variant="p" sx={{ fontFamily: "Jost" }}>
               Seleccione horario
@@ -133,12 +149,11 @@ const Main = () => {
           <Grid mt={3}>
             <Button
               variant="contained"
-              sx={{ backgroundColor: "secondary.main", fontFamily: "Jost" }}
+              sx={{ backgroundColor: "primary.main", fontFamily: "Jost" }}
               type="submit"
               disabled={reserved}
             >
               Reservar
-              {/* <Link className="sub" component={RouterLink} to="/Seleccion/End"> Reservar</Link> */}
             </Button>
           </Grid>
         </Grid>

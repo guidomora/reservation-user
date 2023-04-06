@@ -7,14 +7,16 @@ const useFormStore = () => {
   const { uid, email, displayName } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const createReservation = async ({ fecha, horario, cantidad }) => {
+  const createReservation = async ({ fecha, horario, cantidad, celular, displayName }) => {
     const newReservation = {
       fecha: fecha,
       horario: horario,
       cantidad: cantidad,
+      celular: celular,
+      nombre: displayName
     };
 
-    const newDoc = doc(collection(db, `${uid}/reservations/reservation`));
+    const newDoc = doc(collection(db, `/reservations/user-reservation/${uid}`));
     await setDoc(newDoc, newReservation);
     newReservation.id = newDoc.id
     dispatch(startReservation(newReservation))
@@ -31,3 +33,6 @@ const useFormStore = () => {
 };
 
 export default useFormStore;
+
+
+// const newDoc = doc(collection(db, `${uid}/reservations/reservation`));

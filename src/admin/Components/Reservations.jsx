@@ -10,9 +10,12 @@ const Reservations = () => {
     setReservations()
   }, [])
 
+
   return (
     <div>
-      Reservations
+      {reservations.map(objeto => ( 
+      <p>{objeto.fecha.toDate().toLocaleDateString()}</p>  
+      ))}
     </div>
   )
 }

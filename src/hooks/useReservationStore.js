@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
-import { probandoReset, startSetingReservations, startSettingReservationsPerDay } from "../store/ReservationPanel/reservationSlice";
+import { startSetingReservations, startSettingActiveReservation, startSettingReservationsPerDay } from "../store/ReservationPanel/reservationSlice";
 import { db } from "../firebase/firebase";
 import { useDispatch } from "react-redux";
 
@@ -27,9 +27,18 @@ const useReservationStore = () => {
     dispatch(startSettingReservationsPerDay(filter))
   }
 
+  const setActiveReservation = () => {
+    dispatch(startSettingActiveReservation())
+  }
+
+  const deleteReservationPerDay = () => {
+
+  }
+
   return {
     setReservations,
     setReservationsPerDay,
+    setActiveReservation
   };
 };
 

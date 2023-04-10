@@ -10,3 +10,8 @@
   text-decoration: none;
   color: inherit;
 }
+
+.lista {
+  border-radius: 0;
+  height: 100%;
+}

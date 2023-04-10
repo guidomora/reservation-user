@@ -3,15 +3,20 @@ import { createSlice } from '@reduxjs/toolkit';
 export const reservationSlice = createSlice({
     name: 'reservation',
     initialState: {
-        reservations: []
+        reservations: [],
+        reservationsPerDay:[],
+        activeDay: null,
     },
     reducers: {
         startSetingReservations: (state, {payload}) => {
             state.reservations = payload.cloudReservations
+        },
+        startSettingReservationsPerDay: (state, {payload}) => {
+            state.reservationsPerDay = payload
         },
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { startSetingReservations } = reservationSlice.actions;
+export const { startSetingReservations, startSettingReservationsPerDay, probandoReset } = reservationSlice.actions;

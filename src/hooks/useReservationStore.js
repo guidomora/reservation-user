@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
-import { startSetingReservations } from "../store/ReservationPanel/reservationSlice";
+import { probandoReset, startSetingReservations, startSettingReservationsPerDay } from "../store/ReservationPanel/reservationSlice";
 import { db } from "../firebase/firebase";
 import { useDispatch } from "react-redux";
 
@@ -10,17 +10,26 @@ const useReservationStore = () => {
 
     const collectionRef = collection(db, `reservations`);
     const docs = await getDocs(collectionRef);
-    // como no nostraia el id creamos un array, le pusheamos un objeto que tiene el id y el resto
-    // de la info de los documentos
     const cloudReservations = []
     docs.forEach(doc => {
-      cloudReservations.push({id: doc.id, ...doc.data()})
+      cloudReservations.push({id: doc.id, 
+        fecha: doc.data().fecha.toDate(), 
+        nombre: doc.data().nombre, 
+        celular: doc.data().celular,
+        horario: doc.data().horario,
+        cantidad: doc.data().cantidad 
+      })
     })
     dispatch(startSetingReservations({cloudReservations}));
   };
 
+  const setReservationsPerDay = (filter) => {
+    dispatch(startSettingReservationsPerDay(filter))
+  }
+
   return {
     setReservations,
+    setReservationsPerDay,
   };
 };
 

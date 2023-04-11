@@ -1,10 +1,11 @@
-import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
-import { startSetingReservations, startSettingActiveReservation, startSettingReservationsPerDay } from "../store/ReservationPanel/reservationSlice";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { startDeletingReservationsPerDay, startLogout, startSetingReservations, startSettingActiveReservation, startSettingReservationsPerDay } from "../store/ReservationPanel/reservationSlice";
 import { db } from "../firebase/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const useReservationStore = () => {
   const dispatch = useDispatch();
+  const {activeReservation} = useSelector(state => state.reservation)
 
   const setReservations = async () => {
 
@@ -27,18 +28,25 @@ const useReservationStore = () => {
     dispatch(startSettingReservationsPerDay(filter))
   }
 
-  const setActiveReservation = () => {
-    dispatch(startSettingActiveReservation())
+  const setActiveReservation = (reservations) => {
+    dispatch(startSettingActiveReservation(reservations))
   }
 
-  const deleteReservationPerDay = () => {
+  const deleteReservationPerDay = async () => {
+    dispatch(startDeletingReservationsPerDay())
+    await deleteDoc(doc(db, `/reservations/${activeReservation.id}`));
+  }
 
+  const loginOut = () => {
+    dispatch(startLogout())
   }
 
   return {
     setReservations,
     setReservationsPerDay,
-    setActiveReservation
+    setActiveReservation,
+    deleteReservationPerDay,
+    loginOut
   };
 };
 

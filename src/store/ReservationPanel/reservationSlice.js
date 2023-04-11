@@ -15,20 +15,24 @@ export const reservationSlice = createSlice({
       state.reservationsPerDay = payload;
     },
     startSettingActiveReservation: (state, { payload }) => {
-        state.activeReservation = payload;
+      state.activeReservation = payload;
     },
     startDeletingReservationsPerDay: (state, { payload }) => {
       state.reservationsPerDay = state.reservationsPerDay.filter(
         (reservation) => reservation.id !== payload
       );
     },
+    startLogout : (state) => {
+      state.reservationsPerDay = []
+      state.activeReservation = null;
+    }
   },
 });
 
-// Action creators are generated for each case reducer function
 export const {
   startSetingReservations,
   startSettingReservationsPerDay,
   startDeletingReservationsPerDay,
   startSettingActiveReservation,
+  startLogout
 } = reservationSlice.actions;

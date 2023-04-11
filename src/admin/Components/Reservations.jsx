@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useReservationStore from '../../hooks/useReservationStore'
 import { useSelector } from 'react-redux'
 import { Grid } from '@mui/material'
-import { addDays, formatISO } from 'date-fns'
+import { addDays } from 'date-fns'
 import controlDates from '../../hooks/controlDates'
 
 const ReservationsSideBar = () => {
@@ -13,7 +13,7 @@ const ReservationsSideBar = () => {
 
   useEffect(() => {
     setReservations()
-  }, [])
+  }, [reservationsPerDay])
 
   
   return (

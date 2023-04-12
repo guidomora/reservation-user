@@ -22,6 +22,9 @@ export const reservationSlice = createSlice({
         (reservation) => reservation.id !== payload
       );
     },
+    settingNull : (state) => {
+      state.activeReservation = null;
+    },
     startLogout : (state) => {
       state.reservationsPerDay = []
       state.activeReservation = null;
@@ -34,5 +37,6 @@ export const {
   startSettingReservationsPerDay,
   startDeletingReservationsPerDay,
   startSettingActiveReservation,
-  startLogout
+  startLogout,
+  settingNull
 } = reservationSlice.actions;

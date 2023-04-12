@@ -4,7 +4,7 @@ import useReservationStore from "./useReservationStore";
 
 const controlDates = () => {
   const { reservations } = useSelector((state) => state.reservation);
-  const { setReservationsPerDay } = useReservationStore();
+  const { setReservationsPerDay, setActiveResNull } = useReservationStore();
 
   const actualDay = () => {
     const today = new Date();
@@ -14,6 +14,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setActiveResNull()
   };
 
   const secondDay = () => {
@@ -24,6 +25,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setActiveResNull()
   };
 
   const thirdDay = () => {
@@ -34,6 +36,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setActiveResNull()
   };
 
   const fourthDay = () => {
@@ -44,6 +47,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setActiveResNull()
   };
 
   const fifthDay = () => {
@@ -54,6 +58,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setActiveResNull()
   };
 
   return {

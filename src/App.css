@@ -12,6 +12,22 @@
 }
 
 .lista {
+  cursor: pointer;
+  text-align: center;
   border-radius: 0;
   height: 100%;
+  width: 150px;
+}
+
+.navAdmin:hover {
+  background-color: #ffb703;
+}
+
+.item {
+  cursor: pointer;
+  transition: 400ms ease;
+}
+
+.item:hover{
+  transform: translateY(-3%);
 }

@@ -1,10 +1,12 @@
 import { addDays, formatISO } from "date-fns";
 import { useSelector } from "react-redux";
 import useReservationStore from "./useReservationStore";
+import { useEffect } from "react";
 
 const controlDates = () => {
   const { reservations } = useSelector((state) => state.reservation);
   const { setReservationsPerDay, setActiveResNull } = useReservationStore();
+
 
   const actualDay = () => {
     const today = new Date();

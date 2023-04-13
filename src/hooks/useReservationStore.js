@@ -8,11 +8,9 @@ const useReservationStore = () => {
   const {activeReservation} = useSelector(state => state.reservation)
 
   const setReservations = async () => {
-
-    const collectionRef = collection(db, `reservations`);
-    const docs = await getDocs(collectionRef);
+    const collectionRef = await getDocs(collection(db, `reservations`)) ;
     const cloudReservations = []
-    docs.forEach(doc => {
+    collectionRef.forEach(doc => {
       cloudReservations.push({id: doc.id, 
         fecha: doc.data().fecha.toDate(), 
         nombre: doc.data().nombre, 

@@ -4,7 +4,9 @@ export const formSlice = createSlice({
   name: "form",
   initialState: {
     reservation: [],
-    reserved: false
+    reserved: false,
+    reservationsDay:[],
+    reservations:[]
   },
   reducers: {
     startReservation: (state, { payload }) => {
@@ -14,7 +16,10 @@ export const formSlice = createSlice({
     startClearingReservation: (state) => {
       state.reservation = []
       state.reserved = false
-    }
+    },
+    startSettingReservationsDay: (state, { payload }) => {
+      state.reservationsDay = payload;
+    },
   },
 });
 

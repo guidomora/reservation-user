@@ -8,6 +8,13 @@ const controlDates = () => {
   const { setReservationsPerDay, setActiveResNull } = useReservationStore();
 
 
+  const dayOne = new Date()
+  const dayTwo = addDays(new Date(), 1)
+  const dayThree = addDays(new Date(), 2)
+  const dayFour = addDays(new Date(), 3)
+  const dayFive = addDays(new Date(), 4)
+
+
   const actualDay = () => {
     const today = new Date();
     const todayString = formatISO(today, { representation: "date" }); // Formatea la fecha de hoy como una cadena ISO yyyy-MM-dd

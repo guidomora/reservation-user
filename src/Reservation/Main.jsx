@@ -59,6 +59,8 @@ const Main = () => {
     clearReservation()
   }
 
+
+
   return (
     <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
       <Grid

@@ -20,7 +20,10 @@ export const formSlice = createSlice({
     startSettingReservationsDay: (state, { payload }) => {
       state.reservationsDay = payload;
     },
+    startSetingReservations: (state, { payload }) => {
+      state.reservations = payload.cloudReservations;
+    },
   },
 });
 
-export const { startReservation, startClearingReservation } = formSlice.actions;
+export const { startReservation, startClearingReservation, startSetingReservations, startSettingReservationsDay } = formSlice.actions;

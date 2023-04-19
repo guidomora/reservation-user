@@ -1,7 +1,7 @@
 import { Button, Grid, Input, TextField, Typography } from "@mui/material";
 import { addDays } from "date-fns";
 import { es } from "date-fns/locale";
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSelector } from "react-redux";
@@ -28,10 +28,14 @@ const Main = () => {
     celular: "",
     cantidad: "",
   });
-  const { displayName, uid } = useSelector((state) => state.auth);
+  const { displayName, } = useSelector((state) => state.auth);
   const { reserved } = useSelector(state => state.form)
   const { startLogout } = useAuthStore();
-  const { createReservation, clearReservation } = useFormStore()
+  const { createReservation, clearReservation, setReservations } = useFormStore()
+
+  useEffect(() => {
+    setReservations()
+  }, [])
 
 
   const onDateChanged = (event, changing) => {
@@ -111,7 +115,7 @@ const Main = () => {
               value={celular}
               variant="outlined"
               size="small"
-              sx={{backgroundColor: "white"}}
+              sx={{ backgroundColor: "white" }}
             />
           </Grid>
           <Grid mt={3}>

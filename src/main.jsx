@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './Reservation'
 import './index.css'
 import Reservation from './Reservation'
 import { BrowserRouter } from 'react-router-dom'

@@ -2,6 +2,7 @@ import { Button, Card, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import useReservationStore from '../../hooks/useReservationStore';
+import useFormStore from '../../hooks/useFormStore';
 
 const FilteredReservations = () => {
   const { reservationsPerDay, activeReservation } = useSelector(state => state.reservation)
@@ -10,10 +11,15 @@ const FilteredReservations = () => {
 
   const activo = activeReservation === null ? true : false
 
+  const stop = () => {
+   
+  }
+
 
   return (
     <Grid>
       <Typography mt={3} variant='h1' sx={{ fontSize: 25, fontFamily: "Jost" }}>Cantidad de Reservas: {reservationsPerDay.length}</Typography>
+      <Button onClick={stop}>Detener reservas</Button>
       <Grid sx={{
         display: "flex",
         flexDirection: "row", flexWrap: "wrap", justifyContent: "center", alignItems: "center"

@@ -1,18 +1,13 @@
 import { addDays, formatISO } from "date-fns";
 import { useSelector } from "react-redux";
 import useReservationStore from "./useReservationStore";
-import { useEffect } from "react";
+import useFormStore from "./useFormStore";
 
 const controlDates = () => {
   const { reservations } = useSelector((state) => state.reservation);
   const { setReservationsPerDay, setActiveResNull } = useReservationStore();
+  const { setExcludeDate } = useFormStore()
 
-
-  const dayOne = new Date()
-  const dayTwo = addDays(new Date(), 1)
-  const dayThree = addDays(new Date(), 2)
-  const dayFour = addDays(new Date(), 3)
-  const dayFive = addDays(new Date(), 4)
 
 
   const actualDay = () => {
@@ -23,6 +18,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setExcludeDate(today)
     setActiveResNull()
   };
 
@@ -34,6 +30,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setExcludeDate(today)
     setActiveResNull()
   };
 
@@ -45,6 +42,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setExcludeDate(today)
     setActiveResNull()
   };
 
@@ -56,6 +54,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setExcludeDate(today)
     setActiveResNull()
   };
 
@@ -67,6 +66,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
+    setExcludeDate(today)
     setActiveResNull()
   };
 

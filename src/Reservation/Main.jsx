@@ -10,6 +10,7 @@ import useAuthStore from "../hooks/useAuthStore";
 import useForm from "../hooks/useForm";
 import useFormStore from "../hooks/useFormStore";
 import Swal from "sweetalert2";
+import limitReservations from "../hooks/limitReservations";
 
 registerLocale("es", es);
 
@@ -29,7 +30,7 @@ const Main = () => {
     cantidad: "",
   });
   const { displayName, } = useSelector((state) => state.auth);
-  const { reserved } = useSelector(state => state.form)
+  const { reserved, reservations } = useSelector(state => state.form)
   const { startLogout } = useAuthStore();
   const { createReservation, clearReservation, setReservations } = useFormStore()
 
@@ -62,7 +63,6 @@ const Main = () => {
     await startLogout()
     clearReservation()
   }
-
 
 
   return (

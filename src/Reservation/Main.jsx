@@ -74,7 +74,7 @@ const Main = () => {
         alignItems={"center"}
         border={"solid 1px #C4C4C4"}
         borderRadius={4}
-        sx={{ height: 500, width: 500, backgroundColor: "#edf6f9" }}
+        sx={{ height: 500, width: 500, backgroundColor: "white" }}
       >
         <Grid>
           <Grid display={"flex"}>

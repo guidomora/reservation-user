@@ -49,7 +49,7 @@ const Register = () => {
 
     return (
         <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
-            <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 500, width: 500, backgroundColor: "#edf6f9" }}>
+            <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 500, width: 500, backgroundColor: "white" }}>
                 <Grid sx={{ width: 400 }}>
                     <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost", }}>Crear cuenta</Typography>
                     <Grid container mt={4}>

@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
 import React from 'react'
 import Nav from './Components/Nav';
 import ReservationsSideBar from './Components/Reservations';
@@ -8,7 +8,7 @@ const Admin = () => {
 
   return (
     <Grid
-      sx={{ height: "100vh", width: "100vw", backgroundColor: "#edf6f9" }}
+      sx={{ height: "100vh", width: "100vw", backgroundColor: "white" }}
       className='animate__animated animate__fadeIn'>
       <Grid>
         <Nav />

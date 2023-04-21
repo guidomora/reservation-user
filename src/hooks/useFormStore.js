@@ -43,8 +43,23 @@ const useFormStore = () => {
     dispatch(startSettingReservationsDay(filter))
   };
 
-  const setExcludeDate = (reservationDate) => {
-     dispatch(excludingDate(reservationDate.toLocaleDateString()))
+  const setExcludeDateToState = async(reservationDate) => {
+    const newStoppedDate = {reservationDate}
+    const newDoc = doc(collection(db, `stoppedReservations`));
+    await setDoc(newDoc, newStoppedDate);
+    newStoppedDate.id = newDoc.id
+    
+  }
+
+  const getExcludeDate = async () => {
+    const collectionRef = await getDocs(collection(db, `stoppedReservations`)) ;
+    const cloudStoppedReservations = []
+    collectionRef.forEach(doc => {
+      cloudStoppedReservations.push({
+        fecha: doc.data().reservationDate.toDate(), 
+      })
+    })
+    dispatch(excludingDate(cloudStoppedReservations))
   }
 
   return {
@@ -52,7 +67,8 @@ const useFormStore = () => {
     clearReservation,
     setReservations,
     setReservationsPerDay,
-    setExcludeDate,
+    setExcludeDateToState,
+    getExcludeDate
   };
 };
 

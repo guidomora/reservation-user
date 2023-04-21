@@ -7,12 +7,13 @@ import useFormStore from '../../hooks/useFormStore';
 const FilteredReservations = () => {
   const { reservationsPerDay, activeReservation } = useSelector(state => state.reservation)
   const { setActiveReservation, deleteReservationPerDay } = useReservationStore()
+  const { getExcludeDate } = useFormStore()
 
 
   const activo = activeReservation === null ? true : false
 
   const stop = () => {
-   
+    getExcludeDate()
   }
 
 

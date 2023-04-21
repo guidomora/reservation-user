@@ -10,7 +10,7 @@ import useAuthStore from "../hooks/useAuthStore";
 import useForm from "../hooks/useForm";
 import useFormStore from "../hooks/useFormStore";
 import Swal from "sweetalert2";
-import limitReservations from "../hooks/limitReservations";
+
 
 registerLocale("es", es);
 
@@ -30,7 +30,7 @@ const Main = () => {
     cantidad: "",
   });
   const { displayName, } = useSelector((state) => state.auth);
-  const { reserved, reservations } = useSelector(state => state.form)
+  const { reserved, reservations, excludeDate } = useSelector(state => state.form)
   const { startLogout } = useAuthStore();
   const { createReservation, clearReservation, setReservations } = useFormStore()
 
@@ -38,6 +38,9 @@ const Main = () => {
     setReservations()
   }, [])
 
+  const exclusion = [excludeDate.map(obj => obj.fecha)]
+
+  console.log(excludeDate.map(obj => obj.fecha));
 
   const onDateChanged = (event, changing) => {
     setFormState({ ...formState, [changing]: event });
@@ -101,6 +104,7 @@ const Main = () => {
               maxDate={addDays(new Date(), 4)}
               selected={fecha}
               onChange={(event) => onDateChanged(event, "fecha")}
+              excludeDates={exclusion}
             />
           </Grid>
           <Grid mt={2}>

@@ -55,9 +55,9 @@ const useFormStore = () => {
     const collectionRef = await getDocs(collection(db, `stoppedReservations`)) ;
     const cloudStoppedReservations = []
     collectionRef.forEach(doc => {
-      cloudStoppedReservations.push({
-        fecha: doc.data().reservationDate.toDate(), 
-      })
+      cloudStoppedReservations.push(
+        doc.data().reservationDate.toDate(), 
+      )
     })
     dispatch(excludingDate(cloudStoppedReservations))
   }

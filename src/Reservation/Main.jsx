@@ -38,9 +38,9 @@ const Main = () => {
     setReservations()
   }, [])
 
-  const exclusion = [excludeDate.map(obj => obj.fecha)]
+ 
 
-  console.log(excludeDate.map(obj => obj.fecha));
+  console.log(excludeDate);
 
   const onDateChanged = (event, changing) => {
     setFormState({ ...formState, [changing]: event });
@@ -104,7 +104,7 @@ const Main = () => {
               maxDate={addDays(new Date(), 4)}
               selected={fecha}
               onChange={(event) => onDateChanged(event, "fecha")}
-              excludeDates={exclusion}
+              excludeDates={excludeDate}
             />
           </Grid>
           <Grid mt={2}>

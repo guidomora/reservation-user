@@ -20,7 +20,7 @@ const FilteredReservations = () => {
   return (
     <Grid>
       <Typography mt={3} variant='h1' sx={{ fontSize: 25, fontFamily: "Jost" }}>Cantidad de Reservas: {reservationsPerDay.length}</Typography>
-      <Button onClick={stop}>Detener reservas</Button>
+      <Button onClick={stop} sx={{marginTop: 2}} variant='contained'>Detener reservas</Button>
       <Grid sx={{
         display: "flex",
         flexDirection: "row", flexWrap: "wrap", justifyContent: "center", alignItems: "center"

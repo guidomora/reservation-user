@@ -4,11 +4,13 @@ import React, { useMemo } from 'react'
 import useForm from '../hooks/useForm'
 import useAuthStore from '../hooks/useAuthStore'
 import { useSelector } from 'react-redux'
+import useFormStore from '../hooks/useFormStore'
 
 
 
 const Login = () => {
     const { startLoginWithEmailPassword, startGoogleSignIn, startLoginAdmin } = useAuthStore()
+    const { getExcludeDate } = useFormStore()
     const { status, errorMessage, uid } = useSelector((state) => state.auth)
     const { email, password, inputChange } = useForm({
         email: "",
@@ -20,6 +22,7 @@ const Login = () => {
     const onSubmit = async (event) => {
         event.preventDefault()
         startLoginWithEmailPassword({ email, password })
+        getExcludeDate()
     }
 
     const onGoogleSignIn = async () => {

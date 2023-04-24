@@ -5,8 +5,7 @@ export const formSlice = createSlice({
   initialState: {
     reservation: [],
     reserved: false,
-    reservationsDay:[],
-    reservations:[],
+    datesToExclude:[],
     excludeDate:[]
   },
   reducers: {
@@ -24,10 +23,13 @@ export const formSlice = createSlice({
     startSetingReservations: (state, { payload }) => {
       state.reservations = payload.cloudReservations;
     },
+    startSettingDatesToExclude: (state, {payload}) => {
+      state.datesToExclude = payload
+    },
     excludingDate: (state, {payload}) => {
       state.excludeDate = payload
     }
   },
 });
 
-export const { startReservation, startClearingReservation, startSetingReservations, startSettingReservationsDay, excludingDate } = formSlice.actions;
+export const {startSettingDatesToExclude, startReservation, startClearingReservation, startSetingReservations, startSettingReservationsDay, excludingDate } = formSlice.actions;

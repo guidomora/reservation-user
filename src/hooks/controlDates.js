@@ -6,7 +6,7 @@ import useFormStore from "./useFormStore";
 const controlDates = () => {
   const { reservations } = useSelector((state) => state.reservation);
   const { setReservationsPerDay, setActiveResNull } = useReservationStore();
-  const { setExcludeDateToState } = useFormStore()
+  const { setExcludeDateToState, setDatesToExclude } = useFormStore()
 
 
 
@@ -18,7 +18,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
-    setExcludeDateToState(today)
+    setDatesToExclude(today)
     setActiveResNull()
   };
 
@@ -30,7 +30,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
-    setExcludeDateToState(today)
+    setDatesToExclude(today)
     setActiveResNull()
   };
 
@@ -42,7 +42,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
-    setExcludeDateToState(today)
+    setDatesToExclude(today)
     setActiveResNull()
   };
 
@@ -54,7 +54,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
-    setExcludeDateToState(today)
+    setDatesToExclude(today)
     setActiveResNull()
   };
 
@@ -66,7 +66,7 @@ const controlDates = () => {
       return dateString === todayString; // Compara las cadenas
     });
     setReservationsPerDay(filtered);
-    setExcludeDateToState(today)
+    setDatesToExclude(today)
     setActiveResNull()
   };
 

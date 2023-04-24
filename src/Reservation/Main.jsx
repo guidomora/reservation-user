@@ -133,6 +133,7 @@ const Main = () => {
               onChange={inputChange}
               value={horario}
             >
+              <option selected value={"nada"}>Seleccionar</option>
               <option value={"20"}>20hs</option>
               <option value={"21"}>21hs</option>
               <option value={"22"}>22hs</option>
@@ -149,6 +150,7 @@ const Main = () => {
               onChange={inputChange}
               value={cantidad}
             >
+              <option selected value={"nada"}>Seleccionar</option>
               <option value={"2"}>2</option>
               <option value={"3"}>3</option>
               <option value={"4"}>4</option>

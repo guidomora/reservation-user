@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { excludingDate, startClearingReservation, startReservation, startSetingReservations, startSettingReservationsDay } from "../store/journal/formSlice";
+import { excludingDate, startClearingReservation, startReservation, startSetingReservations, startSettingDatesToExclude, startSettingReservationsDay } from "../store/journal/formSlice";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
@@ -43,12 +43,15 @@ const useFormStore = () => {
     dispatch(startSettingReservationsDay(filter))
   };
 
+  const setDatesToExclude = (day) => {
+    dispatch(startSettingDatesToExclude(day))
+  }
+
   const setExcludeDateToState = async(reservationDate) => {
     const newStoppedDate = {reservationDate}
     const newDoc = doc(collection(db, `stoppedReservations`));
     await setDoc(newDoc, newStoppedDate);
-    newStoppedDate.id = newDoc.id
-    
+    newStoppedDate.id = newDoc.id 
   }
 
   const getExcludeDate = async () => {
@@ -67,6 +70,7 @@ const useFormStore = () => {
     clearReservation,
     setReservations,
     setReservationsPerDay,
+    setDatesToExclude,
     setExcludeDateToState,
     getExcludeDate
   };

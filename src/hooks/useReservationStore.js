@@ -31,7 +31,7 @@ const useReservationStore = () => {
   }
 
   const deleteReservationPerDay = async () => {
-    dispatch(startDeletingReservationsPerDay())
+    dispatch(startDeletingReservationsPerDay(activeReservation.id))
     await deleteDoc(doc(db, `/reservations/${activeReservation.id}`));
     dispatch(settingNull())
   }

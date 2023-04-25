@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import useReservationStore from '../../hooks/useReservationStore';
 import useFormStore from '../../hooks/useFormStore';
+import { useEffect } from 'react';
 
 const FilteredReservations = () => {
   const { reservationsPerDay, activeReservation } = useSelector(state => state.reservation)

@@ -49,11 +49,12 @@ const Register = () => {
 
     return (
         <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
-            <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 500, width: 500, backgroundColor: "white" }}>
-                <Grid sx={{ width: 400 }}>
-                    <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost", }}>Crear cuenta</Typography>
-                    <Grid container mt={4}>
+            <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 500, width:{xs: 350, sm: 380, md:500}, backgroundColor: "white" }}>
+                <Grid sx={{ width:{xs: 350, sm: 380, md:500} }}>
+                    <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost",marginLeft:{ xs:5, md:0} }}>Crear cuenta</Typography>
+                    <Grid container mt={4} sx={{display: "flex", justifyContent:"center"}}>
                         <TextField
+                            sx={{width:{xs:320, sm: 370, md:400}}}
                             label="Nombre y apellido"
                             placeholder="Nombre y apellido"
                             name="displayName"
@@ -64,8 +65,9 @@ const Register = () => {
                             helperText={displayNameValid}
                         />
                     </Grid>
-                    <Grid container mt={4}>
+                    <Grid container mt={4} sx={{display: "flex", justifyContent:"center"}}>
                         <TextField
+                            sx={{width:{xs:320, sm: 370, md:400}}}
                             label="Correo"
                             type="email"
                             placeholder="correo@mail.com"
@@ -77,8 +79,9 @@ const Register = () => {
                             helperText={emailValid}
                         />
                     </Grid>
-                    <Grid item mt={4}>
+                    <Grid item mt={4} sx={{display: "flex", justifyContent:"center"}}>
                         <TextField
+                            sx={{width:{xs:320, sm: 370, md:400}}}
                             label="Contraseña"
                             type="password"
                             placeholder="Contraseña"
@@ -90,11 +93,11 @@ const Register = () => {
                             helperText={passwordValid}
                         />
                     </Grid>
-                    <Grid display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-evenly"} mt={4} sx={{ fontFamily: "Jost", width: 400 }}>
+                    <Grid display={"flex"} flexDirection={"row"} alignItems={"center"} justifyContent={"space-evenly"} mt={4} sx={{ fontFamily: "Jost", width:{xs: 350, sm: 380, md:500} }}>
                         <Grid>
                             {errorMessage ? <Alert sx={{marginBottom: 2}} severity='error'>{errorMessage}</Alert> : ""}
                             <Button
-                                sx={{ width: 400 }}
+                                sx={{ width: {xs:250, md:400} }}
                                 variant="contained"
                                 type="submit"
                                 fullWidth
@@ -106,7 +109,7 @@ const Register = () => {
                     </Grid>
                     <Grid mt={4}>
                         <Link component={RouterLink} to="/auth/login">
-                            <Typography sx={{ fontFamily: "Jost", fontSize: 18 }}>Ya tiene cuenta? Ingrese aqui.</Typography>
+                            <Typography sx={{ fontFamily: "Jost", fontSize: 18, marginLeft:{ xs:5, md:0} }}>Ya tiene cuenta? Ingrese aqui.</Typography>
                         </Link>
                     </Grid>
                 </Grid>

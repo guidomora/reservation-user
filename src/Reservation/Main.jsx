@@ -1,4 +1,4 @@
-import { Button, Grid, Input, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { addDays } from "date-fns";
 import { es } from "date-fns/locale";
 import React, { useEffect } from "react";
@@ -38,10 +38,6 @@ const Main = () => {
     setReservations()
   }, [])
 
- 
-
-  console.log(excludeDate);
-
   const onDateChanged = (event, changing) => {
     setFormState({ ...formState, [changing]: event });
   };
@@ -77,7 +73,7 @@ const Main = () => {
         alignItems={"center"}
         border={"solid 1px #C4C4C4"}
         borderRadius={4}
-        sx={{ height: 500, width: 500, backgroundColor: "white" }}
+        sx={{ height: 500, width:{xs: 350, sm: 380, md:500}, backgroundColor: "white" }}
       >
         <Grid>
           <Grid display={"flex"}>
@@ -133,7 +129,7 @@ const Main = () => {
               onChange={inputChange}
               value={horario}
             >
-              <option selected value={"nada"}>Seleccionar</option>
+              <option defaultValue value={"nada"}>Seleccionar</option>
               <option value={"20"}>20hs</option>
               <option value={"21"}>21hs</option>
               <option value={"22"}>22hs</option>
@@ -150,7 +146,7 @@ const Main = () => {
               onChange={inputChange}
               value={cantidad}
             >
-              <option selected value={"nada"}>Seleccionar</option>
+              <option defaultValue value={"nada"}>Seleccionar</option>
               <option value={"2"}>2</option>
               <option value={"3"}>3</option>
               <option value={"4"}>4</option>

@@ -51,7 +51,7 @@ const Register = () => {
         <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
             <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 500, width:{xs: 350, sm: 380, md:500}, backgroundColor: "white" }}>
                 <Grid sx={{ width:{xs: 350, sm: 380, md:500} }}>
-                    <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost",marginLeft:{ xs:5, md:0} }}>Crear cuenta</Typography>
+                    <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost",marginLeft:{ xs:5} }}>Crear cuenta</Typography>
                     <Grid container mt={4} sx={{display: "flex", justifyContent:"center"}}>
                         <TextField
                             sx={{width:{xs:320, sm: 370, md:400}}}
@@ -109,7 +109,7 @@ const Register = () => {
                     </Grid>
                     <Grid mt={4}>
                         <Link component={RouterLink} to="/auth/login">
-                            <Typography sx={{ fontFamily: "Jost", fontSize: 18, marginLeft:{ xs:5, md:0} }}>Ya tiene cuenta? Ingrese aqui.</Typography>
+                            <Typography sx={{ fontFamily: "Jost", fontSize: 18, marginLeft:{ xs:5} }}>Ya tiene cuenta? Ingrese aqui.</Typography>
                         </Link>
                     </Grid>
                 </Grid>

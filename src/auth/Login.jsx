@@ -33,7 +33,7 @@ const Login = () => {
         <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
             <Grid display={"flex"} flexDirection={"row"} justifyContent={"center"} alignItems={"center"} border={"solid 1px #C4C4C4"} borderRadius={4} sx={{ height: 450, width:{xs: 350, sm: 380, md:500}, backgroundColor: "white" }}>
                 <Grid sx={{ width:{xs: 350, sm: 380, md:500} }}>
-                    <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost", marginLeft:{ xs:5, md:0} }}>Inicio de sesion</Typography>
+                    <Typography variant='h1' sx={{ fontSize: 25, fontFamily: "Jost", marginLeft:{ xs:5} }}>Inicio de sesion</Typography>
                     <Grid container mt={4} sx={{display: "flex", justifyContent:"center"}}>
                         <TextField
                             sx={{width:{xs:320, sm: 370, md:400}}}
@@ -79,7 +79,7 @@ const Login = () => {
                             </Button>
                         </Grid>
                     </Grid>
-                    <Grid mt={4} sx={{width: 200, marginLeft:{ xs:5, md:0}, marginRight:0}}>
+                    <Grid mt={4} sx={{width: 200, marginLeft:{ xs:5}, marginRight:0}}>
                         <Link component={RouterLink} to="/auth/register">
                             <Typography sx={{ fontFamily: "Jost", fontSize: 18}}>Crear una cuenta</Typography>
                         </Link>

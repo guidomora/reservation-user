@@ -3,6 +3,9 @@
 .firstContainer {
   height: 100vh;
   background-color: #14213d;
+  background-image: url("./imagen/pexels-eric-mufasa-1342641.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
 }
 
 
